@@ -1,6 +1,5 @@
 #!/bin/env python
 import os
-# import sys
 import shutil
 import re
 import pprint
@@ -9,6 +8,7 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
+logging.disable(logging.INFO)
 
 
 class hsSorter(object):
@@ -49,4 +49,4 @@ class hsSorter(object):
             if re.search(self.horribleSubsRegex, f):
                 dirName = re.search(self.horribleSubsRegex, f).group(2).strip()
                 shutil.move(f, os.path.join(dirName, f))
-#                 logging.info("will move %s to the new location %s" % (f, dirName))
+                logging.info("will move %s to the new location %s" % (f, dirName))
